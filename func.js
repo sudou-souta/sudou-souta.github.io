@@ -232,13 +232,15 @@ async function work() {
     HP = HP - 20;
     if (HP > 1){
         await showRetroAlert("働いた場合あなたは死ぬため、働けません");	  
-    }
-    // MONEY増やす
-    money = Number(money) + 10;
-    await save();
-    await showRetroAlert("体力は大事に使ってください。労働しました");
+    } else {
+        // MONEY増やす
+        money = Number(money) + 10;
+        await save();
+        await showRetroAlert("体力は大事に使ってください。労働しました");
+     }
   }
 }
+
 
 function near_homeless() {
   // プレイヤーのx,y座標を取得
