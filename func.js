@@ -229,7 +229,7 @@ async function work() {
     await showRetroAlert("あなたは働けません。");
   } else {
     // HP減らす
-    if (Number(HP)-20 > 1){
+    if (Number(HP)-20 < 1){
         await showRetroAlert("働いた場合あなたは死ぬため、働けません");	  
     } else {
 	HP = Number(HP) - 20
