@@ -27,11 +27,12 @@ if (Number(HP) < 1){
     money=0;
     location.reload();
 }
-document.addEventListener('keydown', function(event) {
-  // Check if retroAlert is visibl
+document.addEventListener('keydown', async function(event) {
+  // Check if retroAlert or customConfirm is visible
   const retroAlertVisible = document.getElementById('retroAlert').style.display === 'flex';
-  // If retroAlert is visible, do not process key events
-  if (retroAlertVisible) {
+  const customConfirmVisible = document.getElementById('customConfirm').style.display === 'flex';
+  // If retroAlert or customConfirm is visible, do not process key events
+  if (retroAlertVisible || customConfirmVisible) {
     return;
   }
   if (event.key === 'v') {
