@@ -264,27 +264,27 @@ function near_homeless() {
 
 }
 
-function homeless_help(){
-    let num_money = Number(money);
-    if (num_money < 10){
-	showRetroAlert("あなたはホームレスを助けることはできません");
-	showRetroAlert("ホームレス：お互い、頑張ろうな!");
-    } else {
-        money = Number(money) - 10;
-        maya = Number(maya) + 5;
-        let homeless_ans_pattern = randint(1,3)
-	save();
-        if (homeless_ans_pattern == 1){
-	    showRetroAlert("ホームレス：ありがとう、ありがとう。本当にありがとう。君は命の恩人だ。");
-	    showRetroAlert("Player は ホームレス を助けた。ホームレス は Playerに最大限の感謝をしている");
-        } else if (homeless_ans_pattern == 2){
-	    showRetroAlert("ホームレス：いいのか！？本当に!?ありがとう!");
-	    showRetroAlert("Player は ホームレス を助けた。ホームレス は Playerに最大限の感謝をしている");
-        } else{
-	    showRetroAlert("ホームレス：...");
-	    showRetroAlert("Player は ホームレス を助けた。ホームレス は Playerに最大限の感謝をしている");
-        }
+async function homeless_help(){
+  let num_money = Number(money);
+  if (num_money >= 10){
+    money = Number(money) - 10;
+    maya = Number(maya) + 5;
+    let homeless_ans_pattern = randint(1,3)
+    save();
+    if (homeless_ans_pattern == 1){
+      await showRetroAlert("ホームレス：ありがとう、ありがとう。本当にありがとう。君は命の恩人だ。");
+      await showRetroAlert("Player は ホームレス を助けた。ホームレス は Playerに最大限の感謝をしている");
+    } else if (homeless_ans_pattern == 2){
+      await showRetroAlert("ホームレス：いいのか！？本当に!?ありがとう!");
+      await showRetroAlert("Player は ホームレス を助けた。ホームレス は Playerに最大限の感謝をしている");
+    } else{
+      await showRetroAlert("ホームレス：...");
+      await showRetroAlert("Player は ホームレス を助けた。ホームレス は Playerに最大限の感謝をしている");
     }
+  } else {
+    await showRetroAlert("あなたはホームレスを助けることはできません");
+    await showRetroAlert("ホームレス：お互い、頑張ろうな!");
+  }
 }
 
 // 敵を発生させる関数
