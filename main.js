@@ -28,6 +28,12 @@ if (Number(HP) < 1){
     location.reload();
 }
 document.addEventListener('keydown', function(event) {
+  // Check if retroAlert is visibl
+  const retroAlertVisible = document.getElementById('retroAlert').style.display === 'flex';
+  // If retroAlert is visible, do not process key events
+  if (retroAlertVisible) {
+    return;
+  }
   if (event.key === 'v') {
       showStatus(HP,maya,money);
   } else if (event.key === 'w'){
